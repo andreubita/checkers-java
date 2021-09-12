@@ -7,7 +7,7 @@ import java.util.Objects;
 public class Slot implements SlotI, Serializable {
     private Point position;
     private int color; // -1 - Clear; 0 - Black; 1 - White
-    private int piece; // -1 - Empty; 0 - Black; 1 - White
+    private int piece; // -1 - Empty; 0 - Blue; 1 - Red
 
     public Slot(){
         this.position = null;

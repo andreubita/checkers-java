@@ -11,6 +11,7 @@ public class StartFrame extends JFrame {
     private JPanel buttonsPanel;
 
     private JLabel bannerLabel;
+    private JButton newGameButton;
 
     public StartFrame(){
         super("checkers-java");
@@ -28,15 +29,15 @@ public class StartFrame extends JFrame {
         initializeButtonsPanel();
 
         // Add panels
-        this.setLayout(new BorderLayout());
-        this.add(this.bannerPanel, BorderLayout.NORTH);
-        this.add(this.buttonsPanel, BorderLayout.SOUTH);
+        super.setLayout(new BorderLayout());
+        super.add(this.bannerPanel, BorderLayout.NORTH);
+        super.add(this.buttonsPanel, BorderLayout.SOUTH);
 
-        this.pack();
-        this.setVisible(true);
-        this.setResizable(false);
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        super.pack();
+        super.setVisible(true);
+        super.setResizable(false);
+        super.setLocationRelativeTo(null);
+        super.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     private void initializeBannerPanel(){
@@ -55,9 +56,17 @@ public class StartFrame extends JFrame {
     }
 
     private void initializeButtonsPanel(){
-
+        this.newGameButton = new JButton("New Game");
+        this.newGameButton.setFont(new Font("Serif", Font.PLAIN, 25));
+        this.newGameButton.setBorder(BorderFactory.createEmptyBorder(40, 50, 40, 50));
+        this.newGameButton.addActionListener(e -> {
+            GameFrame gameFrame = new GameFrame(this);
+            gameFrame.setVisible(true);
+            setVisible(false);
+        });
 
         this.buttonsPanel = new JPanel();
+        this.buttonsPanel.add(newGameButton);
         this.buttonsPanel.setPreferredSize(new Dimension(200, 500));
         this.buttonsPanel.setBackground(new Color(33, 33, 33, 255));
     }
